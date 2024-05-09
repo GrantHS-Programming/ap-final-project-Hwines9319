@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerScript : MonoBehaviour
 {
     [SerializeField]
-    private float walkSpeed = 5f;
+    private float walkSpeed = 10f;
 
     private Animator animator;
 
@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     private float yAxis;
     private Rigidbody2D rb2d;
     private bool isJumpPressed;
-    private float jumpForce = 850;
+    private float jumpForce = 1850;
     private int groundMask;
     private bool isGrounded;
     private string currentAnimaton;
@@ -30,7 +30,7 @@ public class PlayerScript : MonoBehaviour
     const string PLAYER_JUMP = "playerJump";
     const string PLAYER_FALL = "playerFall";
     const string PLAYER_ATTACK = "playerSlash";
-    const string PLAYER_AIR_ATTACK = "playerStab";
+    const string PLAYER_ATTACK2 = "playerStab";
 
     //=====================================================
     // Start is called before the first frame update
@@ -55,12 +55,14 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         { 
             isJumpPressed = true;
+            Debug.Log("Jump pressed");
         }
 
         //space Atatck key pressed?
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             isAttackPressed = true;
+            Debug.Log("Attack pressed");
         }
     }
 
@@ -70,11 +72,12 @@ public class PlayerScript : MonoBehaviour
     private void FixedUpdate()
     {
         //check if player is on the ground
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.1f, groundMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1.5f, groundMask);
 
         if (hit.collider != null)
         {
             isGrounded = true;
+            Debug.Log("Grounded");
         }
         else
         {
@@ -95,12 +98,10 @@ public class PlayerScript : MonoBehaviour
         {
             vel.x = walkSpeed;
             transform.localScale = new Vector2(1, 1);
-            
         }
         else
         {
             vel.x = 0;
-            
         }
 
         if (isGrounded && !isAttacking)
@@ -123,6 +124,7 @@ public class PlayerScript : MonoBehaviour
             rb2d.AddForce(new Vector2(0, jumpForce));
             isJumpPressed = false;
             ChangeAnimationState(PLAYER_JUMP);
+            Debug.Log("jump animating?");
         }
 
         //assign the new velocity to the rigidbody
@@ -140,16 +142,22 @@ public class PlayerScript : MonoBehaviour
 
                 if(isGrounded)
                 {
-                    ChangeAnimationState(PLAYER_ATTACK);
+                    ChangeAnimationState(PLAYER_ATTACK2);
                 }
                 else
                 {
-                    ChangeAnimationState(PLAYER_AIR_ATTACK);
+                    if (xAxis > 0)
+                    {
+                        transform.localScale = new Vector3(1,1,1);
+                    }
+                    else if(xAxis < 0)
+                    {
+                        transform.localScale = new Vector3(-1,1,1);
+                    }
+                    ChangeAnimationState(PLAYER_ATTACK);
                 }
-
-  
                 Invoke("AttackComplete", attackDelay);
-
+                Debug.Log("Force complete attack");
 
             }
 
