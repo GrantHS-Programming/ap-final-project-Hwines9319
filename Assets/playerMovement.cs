@@ -20,9 +20,10 @@ public class PlayerScript : MonoBehaviour
     private string currentAnimaton;
     private bool isAttackPressed;
     private bool isAttacking;
+    private bool facingRight = true;
 
     [SerializeField]
-    private float attackDelay = 0.3f;
+    private float attackDelay = 0.5f;
 
     //Animation States
     const string PLAYER_IDLE = "playerIdle";
@@ -77,7 +78,6 @@ public class PlayerScript : MonoBehaviour
         if (hit.collider != null)
         {
             isGrounded = true;
-            Debug.Log("Grounded");
         }
         else
         {
@@ -122,8 +122,8 @@ public class PlayerScript : MonoBehaviour
         if (isJumpPressed && isGrounded)
         {
             rb2d.AddForce(new Vector2(0, jumpForce));
-            isJumpPressed = false;
             ChangeAnimationState(PLAYER_JUMP);
+            isJumpPressed = false;
             Debug.Log("jump animating?");
         }
 
@@ -146,14 +146,6 @@ public class PlayerScript : MonoBehaviour
                 }
                 else
                 {
-                    if (xAxis > 0)
-                    {
-                        transform.localScale = new Vector3(1,1,1);
-                    }
-                    else if(xAxis < 0)
-                    {
-                        transform.localScale = new Vector3(-1,1,1);
-                    }
                     ChangeAnimationState(PLAYER_ATTACK);
                 }
                 Invoke("AttackComplete", attackDelay);
@@ -164,6 +156,14 @@ public class PlayerScript : MonoBehaviour
 
         }
 
+    }
+    
+    void Flip()
+    {
+        Vector3 currentScale = gameObject.transform.localScale;
+        currentScale.x *= -1;
+        gameObject.transform.localScale = currentScale;
+        facingRight = !facingRight;
     }
 
     void AttackComplete()
