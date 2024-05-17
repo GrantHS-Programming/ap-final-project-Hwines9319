@@ -8,24 +8,29 @@ public class ccBossAI : StateMachineBehaviour
    private int rand;
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
+        rand = Random.Range(0,2);
+        Debug.Log(rand);
+
+        if (rand == 0){
+            animator.SetTrigger("Attack");
+            Debug.Log("attack");
+            Debug.Log(rand);    
+        }
+        else{
+            animator.SetTrigger("Move");
+            Debug.Log("move");
+            Debug.Log(rand); 
+        }
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         
+        
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rand = Random.Range(0,2);
-
-        if (rand == 0){
-            animator.SetTrigger("Attack");    
-        }
-        else{
-            animator.SetTrigger("Move");
-        }
     
     }
 

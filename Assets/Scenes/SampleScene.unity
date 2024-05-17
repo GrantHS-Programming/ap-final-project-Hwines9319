@@ -1131,8 +1131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0d331716fa824b23996cf2fc8a86fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1575270637}
   health: 0
-  healthBar: {fileID: 0}
 --- !u!95 &1575270637
 Animator:
   serializedVersion: 5
