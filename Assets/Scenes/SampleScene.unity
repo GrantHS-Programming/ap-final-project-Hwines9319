@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 124984014}
   m_Layer: 7
   m_Name: mainCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1575270637}
-  health: 0
+  Health: 0
 --- !u!95 &1575270637
 Animator:
   serializedVersion: 5
@@ -1169,7 +1169,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1204,7 +1204,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -1232,7 +1232,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4656401, y: 3.602479}
+  m_Size: {x: 1.4656401, y: 3.42}
   m_EdgeRadius: 0
 --- !u!212 &1575270640
 SpriteRenderer:
@@ -1295,7 +1295,7 @@ Transform:
   m_GameObject: {fileID: 1575270635}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.96, y: 3.8200002, z: 0.021773178}
+  m_LocalPosition: {x: 17.82, y: 3.8200002, z: 0.021773178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

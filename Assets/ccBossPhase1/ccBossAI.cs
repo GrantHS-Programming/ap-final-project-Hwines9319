@@ -12,14 +12,16 @@ public class ccBossAI : StateMachineBehaviour
         Debug.Log(rand);
 
         if (rand == 0){
-            animator.SetTrigger("Attack");
+            animator.SetTrigger("BossAttack");
             Debug.Log("attack");
             Debug.Log(rand);    
+
         }
         else{
-            animator.SetTrigger("Move");
+            animator.SetTrigger("BossMove");
             Debug.Log("move");
-            Debug.Log(rand); 
+            Debug.Log(rand);
+ 
         }
     }
 
@@ -31,7 +33,9 @@ public class ccBossAI : StateMachineBehaviour
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    
+        animator.ResetTrigger("BossAttack");
+        animator.ResetTrigger("BossMove");
+
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
