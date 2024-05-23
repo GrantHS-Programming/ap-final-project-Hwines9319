@@ -23,6 +23,7 @@ public class ccBossAI : StateMachineBehaviour
             Debug.Log(rand);
  
         }
+        animator.ResetTrigger("BossAppear");
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

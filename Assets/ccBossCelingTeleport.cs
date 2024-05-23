@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ccBossCelingTeleport : StateMachineBehaviour
 {
+    public float mod;
     private int rand;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        rand = Random.Range(3,20);
-        Vector2 target = new Vector2(rand, animator.transform.position.y);
-        animator.transform.position = Vector2.MoveTowards(animator.transform.position, target, 1);
-
+        
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,10 +19,12 @@ public class ccBossCelingTeleport : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        rand = Random.Range(3,20);
+        Vector2 target = new Vector2(rand, animator.transform.position.y + mod);
+        animator.transform.position = Vector3.MoveTowards(animator.transform.position, target, 100);
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

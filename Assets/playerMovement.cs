@@ -56,14 +56,12 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         { 
             isJumpPressed = true;
-            Debug.Log("Jump pressed");
         }
 
         //space Atatck key pressed?
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             isAttackPressed = true;
-            Debug.Log("Attack pressed");
         }
     }
 
