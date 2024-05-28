@@ -23,7 +23,8 @@ public class PlayerScript : MonoBehaviour
     private bool facingRight = true;
 
     [SerializeField]
-    private float attackDelay = 0.5f;
+    private float attackDelay = 1f;
+    private float jumpAttackDelay = 0.5f;
 
     //Animation States
     const string PLAYER_IDLE = "playerIdle";
@@ -119,8 +120,8 @@ public class PlayerScript : MonoBehaviour
         //Check if trying to jump 
         if (isJumpPressed && isGrounded)
         {
-            rb2d.AddForce(new Vector2(0, jumpForce));
             ChangeAnimationState(PLAYER_JUMP);
+            rb2d.AddForce(new Vector2(0, jumpForce));
             isJumpPressed = false;
             Debug.Log("jump animating?");
         }
@@ -146,11 +147,16 @@ public class PlayerScript : MonoBehaviour
                 {
                     ChangeAnimationState(PLAYER_ATTACK);
                 }
-                Invoke("AttackComplete", attackDelay);
-                Debug.Log("Force complete attack");
+                if (currentAnimaton == PLAYER_ATTACK)
+                {
+                    Invoke("AttackComplete", attackDelay);
+                }
+                if (currentAnimaton == PLAYER_ATTACK2)
+                {
+                    Invoke("AttackComplete", jumpAttackDelay);
+                }
 
             }
-
 
         }
 
