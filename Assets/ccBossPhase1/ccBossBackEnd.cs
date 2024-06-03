@@ -5,19 +5,15 @@ using UnityEngine.UI;
 
 public class bossAI : MonoBehaviour
 {
+    public BoxCollider2D hitCheckerClaw;
     public Animator animator;
     private int rand;
 
-    public int Health = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    public int Health = 100;
+    
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

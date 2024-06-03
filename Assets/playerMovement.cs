@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
     private float yAxis;
     private Rigidbody2D rb2d;
     private bool isJumpPressed;
-    private float jumpForce = 1850;
+    private float jumpForce = 2225;
     private int groundMask;
     private bool isGrounded;
     private string currentAnimaton;
@@ -90,13 +90,19 @@ public class PlayerScript : MonoBehaviour
 
         if (xAxis < 0)
         {
-            vel.x = -walkSpeed;
-            transform.localScale = new Vector2(-1, 1);
+            if (isAttacking == false || isGrounded == false)
+            {
+                vel.x = -walkSpeed;
+                transform.localScale = new Vector2(-1, 1);
+            }
         }
         else if (xAxis > 0)
         {
-            vel.x = walkSpeed;
-            transform.localScale = new Vector2(1, 1);
+            if (isAttacking == false || isGrounded == false)
+            {
+                vel.x = walkSpeed;
+                transform.localScale = new Vector2(1, 1);
+            }
         }
         else
         {
@@ -124,6 +130,15 @@ public class PlayerScript : MonoBehaviour
             rb2d.AddForce(new Vector2(0, jumpForce));
             isJumpPressed = false;
             Debug.Log("jump animating?");
+        }
+
+        if (!isAttacking && !isGrounded)
+        {
+            if(yAxis < 0)
+            {
+                ChangeAnimationState(PLAYER_FALL);
+                Debug.Log("does this een ever happen");
+            }
         }
 
         //assign the new velocity to the rigidbody
