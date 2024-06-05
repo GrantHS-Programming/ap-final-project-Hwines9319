@@ -5,13 +5,8 @@ using UnityEngine.UI;
 
 public class bossAI : MonoBehaviour
 {
-    public BoxCollider2D hitCheckerClaw;
-    public Animator animator;
-    private int rand;
-
-    public int Health = 100;
-    
-    // Update is called once per frame
+    public float bossHealth;
+    public float bossMaxHealth;    
     void Update()
     {
 
