@@ -10,7 +10,7 @@ public class playerHealth : MonoBehaviour
     public float maxHealth;
     public Image healthBar;
     public float damage;
-    public BoxCollider2D hitter;
+    public BoxCollider2D c;
     
 
     // Start is called before the first frame update
@@ -23,15 +23,13 @@ public class playerHealth : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
-        if (IsTouching(hitter))
+    }
+    public void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    {   
+        if (collision.gameObject.name == "hitCheckerClaw")
         {
             Debug.Log("zero chance this works");
             health -= damage;
         }
-    }
-    public bool IsTouching(Collider2D collider)
-    {
-      return IsTouching(collider); 
-    }
-    
+    }  
 }

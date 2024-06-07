@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class bossAI : MonoBehaviour
 {
-    public float bossHealth;
-    public float bossMaxHealth;    
+      
     void Update()
     {
 
