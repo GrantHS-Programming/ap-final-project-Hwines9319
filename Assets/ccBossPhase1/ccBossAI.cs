@@ -9,19 +9,13 @@ public class ccBossAI : StateMachineBehaviour
    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         rand = Random.Range(0,2);
-        Debug.Log(rand);
 
         if (rand == 0){
             animator.SetTrigger("BossAttack");
-            Debug.Log("attack");
-            Debug.Log(rand);    
 
         }
         else{
-            animator.SetTrigger("BossMove");
-            Debug.Log("move");
-            Debug.Log(rand);
- 
+            animator.SetTrigger("BossMove"); 
         }
         animator.ResetTrigger("BossAppear");
     }

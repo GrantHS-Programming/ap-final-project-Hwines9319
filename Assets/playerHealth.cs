@@ -28,7 +28,6 @@ public class playerHealth : MonoBehaviour
     {   
         if (collision.gameObject.name == "hitCheckerClaw")
         {
-            Debug.Log("zero chance this works");
             health -= damage;
         }
     }  

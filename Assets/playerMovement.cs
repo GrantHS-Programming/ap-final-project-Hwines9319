@@ -19,7 +19,7 @@ public class PlayerScript : MonoBehaviour
     private bool isGrounded;
     private string currentAnimaton;
     private bool isAttackPressed;
-    private bool isAttacking;
+    public bool isAttacking;
     private bool facingRight = true;
 
     [SerializeField]
@@ -129,7 +129,6 @@ public class PlayerScript : MonoBehaviour
             ChangeAnimationState(PLAYER_JUMP);
             rb2d.AddForce(new Vector2(0, jumpForce));
             isJumpPressed = false;
-            Debug.Log("jump animating?");
         }
 
         if (!isAttacking && !isGrounded)
@@ -137,7 +136,6 @@ public class PlayerScript : MonoBehaviour
             if(yAxis < 0)
             {
                 ChangeAnimationState(PLAYER_FALL);
-                Debug.Log("does this een ever happen");
             }
         }
 
