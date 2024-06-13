@@ -23,6 +23,10 @@ public class playerHealth : MonoBehaviour
     void Update()
     {
         healthBar.fillAmount = Mathf.Clamp(health / maxHealth, 0, 1);
+        if (health <= 0)
+        {
+            DestroyGameObject();
+        }
     }
     public void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {   
@@ -31,4 +35,8 @@ public class playerHealth : MonoBehaviour
             health -= damage;
         }
     }  
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
 }

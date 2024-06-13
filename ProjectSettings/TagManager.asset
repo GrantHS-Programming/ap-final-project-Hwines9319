@@ -17,7 +17,7 @@ TagManager:
   - Player
   - Boss
   - Sword
-  - 
+  - BackGround
   - 
   - 
   - 
@@ -40,9 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 879246205
+    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: New Layer 1
-    uniqueID: 879246205
     locked: 0
